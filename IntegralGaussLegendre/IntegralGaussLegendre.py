@@ -48,7 +48,7 @@ def PointWeight(p):
 
 # Function for integrating --------------------------------
 
-def Intgrate(Lim_a, Lim_b, p):
+def IntgrateGauss(Lim_a, Lim_b, p):
     mediumPoint = (Lim_a + Lim_b) / 2                 # Medium point of the interval
     x_i, c_i = np.polynomial.legendre.leggauss(p)     # Values for points and weight - numpy
     #x_i, c_i = PointWeight(p)                        # Values for points and weight - PointWeight function
@@ -60,7 +60,7 @@ def Intgrate(Lim_a, Lim_b, p):
 
 # Results display =========================================
 
-print('\nResultado de integração - Algoritmo:\n', Intgrate(Lim_inf, Lim_sup, pontos))
+print('\nResultado de integração - Algoritmo:\n', IntgrateGauss(Lim_inf, Lim_sup, pontos))
 print('\nResultado de integração - Biblioteca:\n',integrate.quadrature(f, Lim_inf, Lim_sup), '\n')
 
 # Curve plot ==============================================
