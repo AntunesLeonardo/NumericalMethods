@@ -45,7 +45,7 @@ def IntegrateSimpson1_3(a, b, d, v):
 
 n = int(1 / (5 * 10**-3))
 print('\nFunção: f(x) = 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2')
-print('\nResultado Integral por Simpson 1/3:', IntegrateSimpson1_3(Lim_inf, Lim_sup, n,aux), '\n')
+print('\nResultado Integral por Simpson 1/3:', IntegrateSimpson1_3(Lim_inf, Lim_sup, n, aux), '\n')
 
 # Curve plot ==============================================
 
