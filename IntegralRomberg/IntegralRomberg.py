@@ -1,7 +1,24 @@
+"""
+Algorithm for solving integration through Romberg method.
+Author: AntunesLeonardo
+"""
+# Library import ------------------------------------------
+
 import numpy as np
-import time
 import matplotlib.pyplot as plt
-# ============================== Space for Functions ==========================
+
+# Variable Input ------------------------------------------
+
+Lim_inf = 0.0                                         # Inferior limit of the interval
+Lim_sup = 1.0                                         # Superior limit of the interval
+h = 0.5
+k = 5
+hs = [h / 2 ** i for i in range(k)]
+
+# Function to be solved -----------------------------------
+def f(x):
+    return np.exp(-x**2)
+
 def romberg(col1):
 
   col1 = [item for item in col1]
@@ -24,24 +41,17 @@ def trapezio(f,a, b, d):
     soma += f(a + k * h)
   return (h / 2) * (f(a) + 2 * soma + f(b))
 
-def f(x):
-
-    return np.exp(-x**2)
-
 
 
 # ============================== Space for Input ==============================
 
-Lim_a, Lim_b = [0, 1]
 
-h = 0.5
-k = 5
-hs = [h / 2 ** i for i in range(k)]
-col1 = [trapezio(f, Lim_a, Lim_b, hi) for hi in hs]
+
+col1 = [trapezio(f, Lim_inf, Lim_sup, hi) for hi in hs]
 print('F_1', col1)
 # ============================== Error Definition =============================
 n = 3                                                   # Número de Subdivisões
-xa = np.linspace(Lim_a,Lim_b,n)                         # Vetor de valores plot
+xa = np.linspace(Lim_inf ,Lim_sup, n)                         # Vetor de valores plot
 e = 5*10**-6                                            # Erro requerido
 E_a = float(0)
 # ============================== Main Loop/Output =============================

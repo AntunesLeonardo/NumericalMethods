@@ -12,11 +12,12 @@ from scipy import integrate
 
 # Variable Input ------------------------------------------
 
-Lim_inf = 0                  # Limite inferior do intervalo
-Lim_sup = 0.8                # Limite superior do intervalo
-pontos = 5                   # Número do pontos para integração
+Lim_inf = 0                                           # Inferior limit of the interval
+Lim_sup = 0.8                                         # Superior limit of the interval
+points = 5                                            # Number of points for integration
 
 # Function to be solved -----------------------------------
+
 def f(x):
     return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
@@ -60,7 +61,7 @@ def IntgrateGauss(Lim_a, Lim_b, p):
 
 # Results display =========================================
 
-print('\nResultado de integração - Algoritmo:\n', IntgrateGauss(Lim_inf, Lim_sup, pontos))
+print('\nResultado de integração - Algoritmo:\n', IntgrateGauss(Lim_inf, Lim_sup, points))
 print('\nResultado de integração - Biblioteca:\n',integrate.quadrature(f, Lim_inf, Lim_sup), '\n')
 
 # Curve plot ==============================================
