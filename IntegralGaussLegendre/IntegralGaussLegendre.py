@@ -2,7 +2,7 @@
 Algorithm for solving integration through Gauss-Legendre method.
 
 The input should be the limits of the interval and the number os points to be used.
-
+Author: AntunesLeonardo
 """
 # Library import ------------------------------------------
 
