@@ -1,26 +1,32 @@
 """
 Algorithm for solving integration through Gauss-Legendre method.
+
+The input should be the limits of the interval and the number os points to be used.
+
 """
-# ==================== Bibliotecas ====================
+# Library import ------------------------------------------
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 
-# ==================== Input ==========================
+# Variable Input ------------------------------------------
 
 Lim_inf = 0                  # Limite inferior do intervalo
 Lim_sup = 0.8                # Limite superior do intervalo
 pontos = 5                   # Número do pontos para integração
 
-# ==================== Função f =======================
+# Function to be solved -----------------------------------
 def f(x):
     return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
-# ==================== Valores método =================
+# Method Values -------------------------------------------
 
-""" Função manual para retornar os valores de x e peso de acordo com o número de pontos.
-def CeX(p):
+""" 
+This function returns the value for the points and weight used in the Gauss-Legendre
+integration method up to 5 points.
+Keep this as comment and rather use outup from numpy library.
+def PointWeight(p):
     c_1 = np.array([2], dtype=float)
     c_2 = np.array([1, 1], dtype=c_1.dtype)
     c_3 = np.array([5/9, 8/9, 5/9], dtype=c_1.dtype)
@@ -40,27 +46,27 @@ def CeX(p):
     elif p == 5: return x_5, c_5
 """
 
-# ==================== Função de Integração ===========
+# Function for integrating --------------------------------
 
-def Intgr(Lim_a, Lim_b, p):
-    pMedio = (Lim_a + Lim_b) / 2                  # Ponto médio
-    x_i, c_i = np.polynomial.legendre.leggauss(p) # Valores de x e peso do método - biblioteca
-    #x_i, c_i = CeX(p)                            # Valores de x e peso do método - manual
+def Intgrate(Lim_a, Lim_b, p):
+    mediumPoint = (Lim_a + Lim_b) / 2                 # Medium point of the interval
+    x_i, c_i = np.polynomial.legendre.leggauss(p)     # Values for points and weight - numpy
+    #x_i, c_i = PointWeight(p)                        # Values for points and weight - PointWeight function
     I = 0
-    for i in range(p):                            # Somatório
-        x_i[i] = pMedio + (Lim_b - Lim_a) * x_i[i] / 2
+    for i in range(p):                                # Sum
+        x_i[i] = mediumPoint + (Lim_b - Lim_a) * x_i[i] / 2
         I += c_i[i] * f(x_i[i])
     return I * (Lim_b - Lim_a) / 2
 
-# ==================== Resultados =====================
+# Results display =========================================
 
-print('\nResultado de integração - Algoritmo:\n', Intgr(Lim_inf, Lim_sup, pontos))
+print('\nResultado de integração - Algoritmo:\n', Intgrate(Lim_inf, Lim_sup, pontos))
 print('\nResultado de integração - Biblioteca:\n',integrate.quadrature(f, Lim_inf, Lim_sup), '\n')
 
-# ==================== Plot da curva ==================
+# Curve plot ==============================================
 
 xPlot = np.linspace(Lim_inf, Lim_sup, (Lim_sup - Lim_inf) * 100)
-plt.plot(xPlot, f(xPlot), lw=2, c='r')
+plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod')
 plt.title('Curva de f(x) no intervalo ['+str(Lim_inf)+'; '+str(Lim_sup)+']')
 plt.grid()
 plt.xlabel('x')
