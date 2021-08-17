@@ -10,9 +10,9 @@ import time
 
 # Variable Input ------------------------------------------
 
-Lim_a = float(input('\nDigite o Limite Inferior:'))
-Lim_b = float(input('Digite o Limite Superior:'))
-y = float(input('Valor da função no limite:'))
+Lim_inf = 0
+Lim_sup = 5
+y = 10
 
 # Function to be solved -----------------------------------
 
@@ -33,4 +33,4 @@ def IntegrateEulerRegr(a,b,y,d):
 
 d = 5*10^-6    # definição dos passos
 
-print('\nO resultado da Integral é:', IntegrateEulerRegr(Lim_a,Lim_b,y,d), '\n')
+print('\nO resultado da Integral é:', IntegrateEulerRegr(Lim_inf, Lim_sup, y, d), '\n')

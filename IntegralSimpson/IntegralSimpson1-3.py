@@ -1,13 +1,29 @@
+"""
+Algorithm for solving integration through Simpson 1/3 method.
+Author: AntunesLeonardo
+"""
+# Library import ------------------------------------------
+
 import numpy as np
 from scipy import interpolate
 import matplotlib.pyplot as plt
 
-# ============================== Space for Functions ==========================
-def f(x):
+# Variable Input ------------------------------------------
 
+Lim_inf = 0.0
+Lim_sup = 0.8
+
+aux = 'f'      # Defina se é por função ou por valores [f/v]
+curve = np.array([0, 1, 2], dtype=float)
+
+# Function to be solved -----------------------------------
+
+def f(x):
     return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
-def simpson1_3(a, b, d, v):                            
+# Function for integrating --------------------------------
+
+def IntegrateSimpson1_3(a, b, d, v):                            
 
     delta = (b - a) / d
     x = a
@@ -24,25 +40,19 @@ def simpson1_3(a, b, d, v):
             x = x + delta
 
     return s  
-# ============================== Space for Input ==============================
-curve = np.zeros(3)
-Lim_a = float(input('Limite Inferior:'))
-Lim_b = float(input('Limite Superior:'))
-aux = input('Defina se é por função ou por valores [f/v] :')
-if(aux == 'v'):
-    for i in range(3):
-        curve = float(input('Valores:'))
-# ============================== Error Definition =============================
-n = int(1 / (5 * 10**-3))                               # Número de Subdivisões
-xa = np.linspace(Lim_a,Lim_b,n)                         # Vetor de valores plot
 
-# ============================== Main Loop/Output =============================
-print('Valor da Integral por Simpson 1/3:', simpson1_3(Lim_a, Lim_b, n,aux))
+# Results display =========================================
 
-# ============================== Space for Plots ==============================
-plt.plot(xa, f(xa), 'b')
+n = int(1 / (5 * 10**-3))
 
+print('\nResultado Integral por Simpson 1/3:', IntegrateSimpson1_3(Lim_inf, Lim_sup, n,aux), '\n')
+
+# Curve plot ==============================================
+
+xPlot = np.linspace(Lim_inf, Lim_sup, (Lim_sup - Lim_inf) * 100)
+plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod')
+plt.title('Curva de f(x) no intervalo ['+str(Lim_inf)+'; '+str(Lim_sup)+']')
 plt.grid()
 plt.xlabel('x')
-plt.ylabel('y')
+plt.ylabel('f(x)')
 plt.show()

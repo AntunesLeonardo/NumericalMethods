@@ -1,12 +1,25 @@
+"""
+Algorithm for solving integration through Trapezoidal method.
+Author: AntunesLeonardo
+"""
+# Library import ------------------------------------------
+
 import numpy as np
-import time
 import matplotlib.pyplot as plt
-# ============================== Space for Functions ==========================
+
+# Variable Input ------------------------------------------
+
+Lim_inf = 0
+Lim_sup = 0.8
+
+# Function to be solved -----------------------------------
+
 def f(x):
+    return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
-    return np.exp(-x**2)
+# Function for integrating --------------------------------
 
-def trapezio(a, b, d):                            
+def IntegrateTrapezio(a, b, d):                            
 
     delta = (b - a) / d
     x = a
@@ -15,24 +28,21 @@ def trapezio(a, b, d):
         s += (f(x) + f(x+delta)) * delta / 2
         x += delta
     return s 
-# ============================== Space for Input ==============================
-Lim_a = float(input('Limite Inferior:'))
-Lim_b = float(input('Limite Superior:'))
 
-# ============================== Error Definition =============================
-n = int(1 / (5 * 10**-3))                               # Número de Subdivisões
-xa = np.linspace(Lim_a,Lim_b,n)                         # Vetor de valores plot
+# Results display =========================================
 
-# ============================== Main Loop/Output =============================
-
-I = trapezio(Lim_a, Lim_b, n)
-E_t = -1/12*(-f(I)*(Lim_b-Lim_a)**3)
-print('\nValor da Integral Trapezoidal:',I)
+n = int(1 / (5 * 10**-3))
+I = IntegrateTrapezio(Lim_inf, Lim_sup, n)
+E_t = -1/12*(-f(I)*(Lim_inf-Lim_sup)**3)
+print('\nValor da Integral Trapezoidal:', I)
 print('\nErro Total:',E_t)
-# ============================== Space for Plots ==============================
-plt.plot(xa, f(xa), 'b')
-plt.title('F(x) = 400x^5-900x^4+675x^3-200x^2+25x+0.2')
+
+# Curve plot ==============================================
+
+xPlot = np.linspace(Lim_inf, Lim_sup, (Lim_sup - Lim_inf) * 100)
+plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod')
+plt.title('Curva de f(x) no intervalo ['+str(Lim_inf)+'; '+str(Lim_sup)+']')
 plt.grid()
 plt.xlabel('x')
-plt.ylabel('y')
+plt.ylabel('f(x)')
 plt.show()

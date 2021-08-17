@@ -6,13 +6,12 @@ Author: AntunesLeonardo
 # Library import ------------------------------------------
 
 import numpy as np
-import time
 
 # Variable Input ------------------------------------------
 
-Lim_a = float(input('\nDigite o Limite Inferior:'))
-Lim_b = float(input('Digite o Limite Superior:'))
-y = float(input('Valor da função no limite:'))
+Lim_inf = 0.0
+Lim_sup = 5.0
+y = 20.0
 
 # Function to be solved -----------------------------------
 
@@ -33,4 +32,4 @@ def IntegrateEulerProg(a,b,y,d):
 
 d = 5*10^-6    # definição dos passos
 
-print('\nO resultado da Integral é:', IntegrateEulerProg(Lim_a,Lim_b,y,d), '\n')
+print('\nO resultado da Integral é:', IntegrateEulerProg(Lim_inf, Lim_sup, y, d), '\n')

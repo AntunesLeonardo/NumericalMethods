@@ -1,13 +1,29 @@
+"""
+Algorithm for solving integration through Simpson 3/8 method.
+Author: AntunesLeonardo
+"""
+# Library import ------------------------------------------
+
 import numpy as np
 from scipy import interpolate
 import matplotlib.pyplot as plt
 
-# ============================== Space for Functions ==========================
-def f(x):                                              # Espaço para uso da função definida automaticamente
+# Variable Input ------------------------------------------
 
+Lim_inf = 0.0
+Lim_sup = 0.8
+
+aux = 'f'      # Defina se é por função ou por valores [f/v]
+curve = np.array([0, 1, 2], dtype=float)
+
+# Function to be solved -----------------------------------
+
+def f(x):
     return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
-def simpson3_8(a, b, d, v):                            
+# Function for integrating --------------------------------
+
+def IntegrateSimpson3_8(a, b, d, v):                            
 
     delta = (b - a) / d                                # Cálculo dos retangulos contidos na função (Soma de Riemann)
     x = a
@@ -22,28 +38,21 @@ def simpson3_8(a, b, d, v):
         for i in range(d):
             s = s + (y_a(x)+y_a(x+delta))*3*delta/8
             x = x + delta
-
     return s  
-# ============================== Space for Input ==============================
-curve = np.zeros(3)                                             # Vetor Y para uso da interpolação
-Lim_a = float(input('Limite Inferior:'))
-Lim_b = float(input('Limite Superior:'))
-aux = input('Defina se é por função ou por valores [f/v] :')
-if(aux == 'v'):
-    for i in range(3):
-        curve = float(input('Valores:'))
-# ============================== Error Definition =============================
+
+# Results display =========================================
+
 n = int(1 / (5 * 10**-3))                               # Número de Subdivisões
-xa = np.linspace(Lim_a,Lim_b,n)                         # Vetor de valores plot
 
-# ============================== Main Loop/Output =============================
-print('Valor da Integral por Simpson 3/8:', simpson3_8(Lim_a, Lim_b, n,aux))
-print('\nNúmero de retangulos usados:',n)
+print('\nValor da Integral por Simpson 3/8:', IntegrateSimpson3_8(Lim_inf, Lim_sup, n, aux))
+print('\nNúmero de retangulos usados:',n, '\n')
 
-# ============================== Space for Plots ==============================
-plt.plot(xa, f(xa), 'b')                                    #Plotagem do gráfico real da função de análise
+# Curve plot ==============================================
+
+xPlot = np.linspace(Lim_inf, Lim_sup, (Lim_sup - Lim_inf) * 100)
+plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod')
+plt.title('Curva de f(x) no intervalo ['+str(Lim_inf)+'; '+str(Lim_sup)+']')
 plt.grid()
-plt.title('f(x) = 400x^5-900x^4+675x^3-200x^2+25x+0.2')
 plt.xlabel('x')
-plt.ylabel('y')
+plt.ylabel('f(x)')
 plt.show()
