@@ -6,7 +6,6 @@ Author: AntunesLeonardo
 # Library import ------------------------------------------
 
 import numpy as np
-import time
 
 # Variable Input ------------------------------------------
 
@@ -33,4 +32,5 @@ def IntegrateEulerRegr(a,b,y,d):
 
 d = 5*10^-6    # definição dos passos
 
+print('\nFunção: f(x) = x**2 - 15*x + 36')
 print('\nO resultado da Integral é:', IntegrateEulerRegr(Lim_inf, Lim_sup, y, d), '\n')

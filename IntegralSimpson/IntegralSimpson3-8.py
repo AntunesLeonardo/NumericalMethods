@@ -43,7 +43,7 @@ def IntegrateSimpson3_8(a, b, d, v):
 # Results display =========================================
 
 n = int(1 / (5 * 10**-3))                               # Número de Subdivisões
-
+print('\nFunção: f(x) = 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2')
 print('\nValor da Integral por Simpson 3/8:', IntegrateSimpson3_8(Lim_inf, Lim_sup, n, aux))
 print('\nNúmero de retangulos usados:',n, '\n')
 

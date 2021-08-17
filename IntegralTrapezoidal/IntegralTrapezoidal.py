@@ -9,13 +9,15 @@ import matplotlib.pyplot as plt
 
 # Variable Input ------------------------------------------
 
-Lim_inf = 0
-Lim_sup = 0.8
+Lim_inf = -1
+Lim_sup = 1
 
 # Function to be solved -----------------------------------
 
 def f(x):
-    return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
+    return x + 1
+    #return np.sin(x)
+    #return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
 # Function for integrating --------------------------------
 
@@ -34,8 +36,9 @@ def IntegrateTrapezio(a, b, d):
 n = int(1 / (5 * 10**-3))
 I = IntegrateTrapezio(Lim_inf, Lim_sup, n)
 E_t = -1/12*(-f(I)*(Lim_inf-Lim_sup)**3)
-print('\nValor da Integral Trapezoidal:', I)
-print('\nErro Total:',E_t)
+print('\nFunção f(x) = x + 1')
+print('\nResultado Integral Trapezoidal:', I)
+print('\nErro Total:',E_t, '\n')
 
 # Curve plot ==============================================
 

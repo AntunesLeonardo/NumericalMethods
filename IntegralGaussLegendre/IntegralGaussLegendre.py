@@ -19,6 +19,8 @@ points = 5                                            # Number of points for int
 # Function to be solved -----------------------------------
 
 def f(x):
+    #return x + 1
+    #return np.sin(x)
     return 400*x**5-900*x**4+675*x**3-200*x**2+25*x+0.2
 
 # Method Values -------------------------------------------
@@ -61,6 +63,7 @@ def IntgrateGauss(Lim_a, Lim_b, p):
 
 # Results display =========================================
 
+print('\nFunção f(x) = x + 1')
 print('\nResultado de integração - Algoritmo:\n', IntgrateGauss(Lim_inf, Lim_sup, points))
 print('\nResultado de integração - Biblioteca:\n',integrate.quadrature(f, Lim_inf, Lim_sup), '\n')
 

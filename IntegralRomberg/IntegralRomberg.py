@@ -20,7 +20,6 @@ def f(x):
     return np.exp(-x**2)
 
 def romberg(col1):
-
   col1 = [item for item in col1]
   n = len(col1)
 
@@ -30,7 +29,7 @@ def romberg(col1):
       power = j + 1
       temp_col[i] = (4 ** power * col1[i + 1] - col1[i]) / (4 ** power - 1)
     col1[:n - 1 - j] = temp_col
-    print(f'F_{j+2}',temp_col)
+    #print(f'F_{j+2}',temp_col)
   return col1[0]
 
 def trapezio(f,a, b, d):                            
@@ -41,29 +40,20 @@ def trapezio(f,a, b, d):
     soma += f(a + k * h)
   return (h / 2) * (f(a) + 2 * soma + f(b))
 
-
-
-# ============================== Space for Input ==============================
-
-
+# Results display =========================================
 
 col1 = [trapezio(f, Lim_inf, Lim_sup, hi) for hi in hs]
 print('F_1', col1)
-# ============================== Error Definition =============================
-n = 3                                                   # Número de Subdivisões
-xa = np.linspace(Lim_inf ,Lim_sup, n)                         # Vetor de valores plot
-e = 5*10**-6                                            # Erro requerido
-E_a = float(0)
-# ============================== Main Loop/Output =============================
-r = romberg(col1)
 
 
-print('\nValor da Integral Trapezoidal:',r)
-#print('\nErro Total:',E_a)
-# ============================== Space for Plots ==============================
-plt.plot(xa, f(xa), 'b')
-plt.title('F(x) = Sen (x)')
+print('\nResultado Integral Romberg:', romberg(col1), '\n')
+
+# Curve plot ==============================================
+
+xPlot = np.linspace(Lim_inf, Lim_sup, (Lim_sup - Lim_inf) * 100)
+plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod')
+plt.title('Curva de f(x) no intervalo ['+str(Lim_inf)+'; '+str(Lim_sup)+']')
 plt.grid()
 plt.xlabel('x')
-plt.ylabel('y')
+plt.ylabel('f(x)')
 plt.show()
