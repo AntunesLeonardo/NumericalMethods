@@ -25,7 +25,7 @@ def f(x):
 """ 
 This function returns the value for the points and weight used in the Gauss-Legendre
 integration method up to 5 points.
-Keep this as comment and rather use outup from numpy library.
+Keep this as comment and rather use output from numpy library.
 def PointWeight(p):
     c_1 = np.array([2], dtype=float)
     c_2 = np.array([1, 1], dtype=c_1.dtype)
