@@ -1,5 +1,5 @@
 """
-Algorithm for solving integration through Gauss-Legendre method.
+Algorithm for solving diferencial equations through Euler method.
 
 The input should be the limits of the interval and the number os points to be used.
 Author: AntunesLeonardo
@@ -11,10 +11,10 @@ import matplotlib.pyplot as plt
 
 # Variable Input ------------------------------------------
 
-h = 1
-a = 0
-b = 4
-ci = 2
+h = 1                                                 # Step
+a = 0                                                 # Start point
+b = 4                                                 # End point
+ci = 2                                                # Initial guess
 
 # Function to be solved -----------------------------------
 
@@ -24,11 +24,11 @@ def y_(t, y):
 # Function for solving ------------------------------------
 
 def EdoEuler(a, b, ci, h):
-    yn = ci
-    for i in range(0, b, h):
-        a = yn
-        yn += y_(i, a) * h
-    return yn
+    yNew = ci
+    for i in range(a, b, h):
+        yOld = yNew
+        yNew += y_(i, yOld) * h
+    return yNew
 
 # Results display =========================================
 
