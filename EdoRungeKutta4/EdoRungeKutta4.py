@@ -1,5 +1,5 @@
 """
-Algorithm for solving diferencial equations through Heun method.
+Algorithm for solving diferencial equations through Runge Kutta method.
 
 The input should be the step, the limits of the interval and the initial guess.
 Author: AntunesLeonardo
@@ -14,8 +14,7 @@ import matplotlib.pyplot as plt
 h = 1                                                 # Step
 a = 0                                                 # Start point
 b = 4                                                 # End point
-ci = 2                                                # Initial guess
-Error = 1e-7                                          # Error
+ci = 3                                                # Initial guess
 
 # Function to be solved -----------------------------------
 
@@ -24,29 +23,20 @@ def y_(t, y):
 
 # Function for solving ------------------------------------
 
-def EdoHeun(a, b, ci, h, err):
-    yn = ci
-    y = y_a = 0
-    E_a = 2*err
-
+def EdoRungeKutta4(a, b, ci, h):
+    y = ci
     for i in range(a, b, h):
-        y = yn + y_(i, y)*h
-        x = 0
+        yc = y
+        k1 = y_(i, yc)
+        k2 = y_(i + h/2, yc + k1*h/2)
+        k3 = y_(i + h/2, yc + k2*h/2)
+        k4 = y_(i + h, yc + k3*h)
+        fi = (k1 + 2*k2 + 2*k3 + k4) / 6
 
-        while (E_a > err):
-            x += 1
-            y_a = y
-            y = yn + h * (y_(i, yn) + y_(i+h, y_a)) / 2
-
-            e_a = E_a
-            E_a = abs((y - y_a) / y)
-
-            if(e_a < E_a):
-                y = -1
-        
+        y = yc + fi * h
     return y
 
 # Results display =========================================
 
 print('\nFunção y´ = 4e^(0,8t) - 0,5y')
-print('\nMétodo Heun - Resultado:', round(EdoHeun(a, b, ci, h, Error), 4), '\n')
+print('\nMétodo Runge Kutta - Resultado:', round(EdoRungeKutta4(a, b, ci, h), 4), '\n')
