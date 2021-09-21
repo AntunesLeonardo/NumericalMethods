@@ -33,4 +33,4 @@ def EdoEuler(a, b, ci, h):
 # Results display =========================================
 
 print('\nFunção y´ = 4e^(0,8t) - 0,5y')
-print('\nMétodo Euler - Resultado:', round(EdoEuler(a, b, ci, h), 4), '\n')
+print('\nMétodo Euler - Resultado:', round(EdoEuler(a, b, y_(0, ci), h), 4), '\n')
