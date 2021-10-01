@@ -45,7 +45,7 @@ print('\n')
 
 xPlot = np.linspace(a, b, (b - a) * 100)
 plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod', label='f(x)')
-plt.scatter(result, f(result), color='b')
+plt.scatter(result, f(result), color='b', label='Raiz')
 plt.grid()
 plt.legend()
 plt.title('Função f(x)')

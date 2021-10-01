@@ -23,7 +23,7 @@ def f(x):
 
 # Functions -----------------------------------------------
 
-def ZeroBisseccao(f, a, b, e):
+def RaizBisseccao(f, a, b, e):
     E = abs(b - a)
     while(E > e):
         E = abs(b - a)
@@ -43,7 +43,7 @@ def ZeroBisseccao(f, a, b, e):
 
 # Results display =========================================
 
-result = ZeroBisseccao(f, a, b, e)
+result = RaizBisseccao(f, a, b, e)
 print('\nFunção: f(x) = x + 1')
 print('\nIntervalo de teste:', '[', a, ', ', b, ']')
 print('\nZero em:', result, '\n')
@@ -52,7 +52,7 @@ print('\nZero em:', result, '\n')
 
 xPlot = np.linspace(a, b, (b - a) * 100)
 plt.plot(xPlot, f(xPlot), lw=2, c='GoldenRod', label='f(x)')
-plt.scatter(result, f(result), color='b')
+plt.scatter(result, f(result), color='b', label='Raiz')
 plt.grid()
 plt.legend()
 plt.title('Função f(x)')
