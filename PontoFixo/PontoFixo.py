@@ -65,7 +65,7 @@ def PlotFuncao(Xi, Xf, step):
 
     plt.plot(plotx, ploty, c='b')
     plt.plot(xEncontrado, f(xEncontrado), marker='o', c='k')
-    plt.plot(axisX, axisY, ls=':', c='k')
+    plt.grid()
     plt.show()
 
 xEncontrado, erroRelativo, iteracoes = pontoFixo(valorInicial)
