@@ -36,20 +36,16 @@ def RaizPontoFixo(f_, vI, Erro):
     while Er > Erro:
         array = np.append(array, f_(array[i]))
         Er = Erelativo(array[i], array[i+1])
-    
-        print('AAAAAAAA', array)
         i+=1
     return array[-1], Er, i
 
 # Results display =========================================
 
 result, erroRelativo, iterations = RaizPontoFixo(g, valorInicial, Erro)
-print("A raiz é", result, "Erro relativo:", erroRelativo)
-print("Número de iterações:", iterations)
-
 print('\nFunção: f(x) = e^-x - x')
 print('\nValor inicial:', valorInicial)
-print('\nRaiz em:', result, '\n')
+print('\nRaiz em:', result)
+print('\nCalculado com', iterations, 'iterações\n')
 
 # Curve plot ==============================================
 
