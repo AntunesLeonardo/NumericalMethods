@@ -49,7 +49,7 @@ def triangular(mtrx, lins, cols):                          # Makes matrix triang
         j += 1
     return mtrx
 
-def MatrizEGaussPiv(mtrx):                                       # Main function
+def MatrizEGaussPiv(mtrx):                                 # Main function
     lins, cols = mtrx.shape                                # Get matrix shape
     x = np.zeros((lins), dtype=(mtrx.dtype))               # Create results matrix
     

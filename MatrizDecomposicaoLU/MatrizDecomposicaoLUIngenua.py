@@ -40,7 +40,6 @@ def triangularLU(mtrx, lins, cols):                        # Makes matrix triang
                 mtrxU = anulaElemeto(mtrxU, i, j, lins)
             i += 1
         j += 1
-    # print(mtrxL, mtrxU)
     return mtrxL, mtrxU
 
 def MatrizLUIngenua(mtrxA, mtrxB):                         # Main function
@@ -80,4 +79,4 @@ print('\nMatriz de entrada:\n', matrizA)
 print('\nResultados (LU Ingênua):\n')
 for i in range(0, len(result)):
     print('X', i+1, '=', result[i])
-print('')  
+print('')
