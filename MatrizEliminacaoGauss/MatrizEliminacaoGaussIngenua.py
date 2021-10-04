@@ -36,7 +36,7 @@ def triangular(mtrx, lins, cols):                          # Makes matrix triang
         j += 1
     return mtrx
 
-def MatrizEGaussIng(mtrx):                                       # Main function
+def MatrizEGaussIng(mtrx):                                 # Main function
     lins, cols = mtrx.shape                                # Get matrix shape
     x = np.zeros((lins), dtype='f4')                       # Create results matrix
     
