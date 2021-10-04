@@ -32,7 +32,7 @@ def Erelativo (x1, x2):                                    # Relative error calc
     Er = abs(((x2 - x1) / x2) * 100)
     return Er
 
-def RaizNewtonRaphson(f, f_, g, vI, Erro):
+def RaizNewton(f, f_, g, vI, Erro):
     i = 0                                                  # Iteration counter
     Er = 100                                               # Set initial error to a high value
     arrayX = np.array([vI], dtype=float)                   # Creates array with the calculated valaues
@@ -45,7 +45,7 @@ def RaizNewtonRaphson(f, f_, g, vI, Erro):
 
 # Results display =========================================
 
-result, erroRelativo, iterations = RaizNewtonRaphson(f, f_, g, valorInicial, Erro)
+result, erroRelativo, iterations = RaizNewton(f, f_, g, valorInicial, Erro)
 print('\nFunção: f(x) = e^-x - x')
 print('\nValor inicial:', valorInicial)
 print('\nRaiz em:', result)
