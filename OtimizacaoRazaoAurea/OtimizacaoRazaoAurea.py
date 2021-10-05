@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Inform input values ----------------------------------
+
 edges = np.array([-5, 3], dtype='f8')
 x12 = np.zeros((2), dtype=(edges.dtype))
 
@@ -64,5 +65,5 @@ def aurea():
 graphGenerate(edges[0], edges[1], 0.01)
 xmin = aurea()
 print("X para mínimo valor de f(x):", xmin)
-plt.plot(xmin, f(xmin), marker='o', c='k')
+plt.scatter(xmin, f(xmin), c='k')
 plt.show()

@@ -5,11 +5,11 @@
 # Busca de um máx/min pela interpolação
 
 import numpy as np
-import time
+#import time
 import matplotlib.pyplot as plt
 
 # Inform input values -----------------------------------------
-x0, x1, x2, e = -5, 5, 0, 10**-3
+x0, x1, x2, e = -5, 5, 0, 1e-3
 
 def otminter(limi,lims,x,e):
   a=1
@@ -52,18 +52,18 @@ def graphGenerate(iPoint, fPoint, step, xr):
         i += 1
         x += step
     
-    plt.plot(mtrxX, mtrxY, ls='-', lw=1.5, c='b')
+    plt.plot(mtrxX, mtrxY, ls='-', lw=1.5, c='GoldenRod')
     plt.grid(color = 'k', ls = ':', lw = 0.5)
     plt.xlabel("Eixo X")
     plt.ylabel("Eixo Y")
     plt.title("Interpolação quadratica - g(x)")
-    plt.plot(xr,yi,marker='o')
+    plt.scatter(xr,yi, c='k')
     plt.show()
 
-start= time.time_ns()
+#start= time.time_ns()
 x = otminter(x0,x1,x2,e)
-stop=time.time_ns()
+#stop=time.time_ns()
 # definitons for the plot of graphc
 graphGenerate(x0, 50, 10**-3,x)  
 print('\nX para mínimo valor de f(x):',x)
-print('\n Tempo Necessário:',(stop-start)*10**-6,'ms')
+#print('\n Tempo Necessário:',(stop-start)*10**-6,'ms')
