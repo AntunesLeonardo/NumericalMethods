@@ -74,6 +74,7 @@ def MatrizLUIngenua(mtrxA, mtrxB):                         # Main function
 
 # Results display =========================================
 
+#print(triangularLU(mtrxA, lins, cols))
 result = MatrizLUIngenua(matrizA, matrizB)
 print('\nMatriz de entrada:\n', matrizA)
 print('\nResultados (LU Ingênua):\n')

@@ -29,14 +29,14 @@ def rk4(x0,y0,xn,n):
 
 # Inputs
 print('Enter initial conditions:')
-x0 = float(input('x0 = '))
-y0 = float(input('y0 = '))
+x0 = 0
+y0 = 2
 
 print('Enter calculation point: ')
 xn = float(input('xn = '))
 
 print('Enter number of steps:')
-step = int(input('Number of steps = '))
+step = 0.5
 
 # RK4 method call
 rk4(x0,y0,xn,step)

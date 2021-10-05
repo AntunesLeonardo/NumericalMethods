@@ -93,7 +93,7 @@ def MatrizLUPivot(mtrxA, mtrxB):                                # Main function
 
 result = MatrizLUPivot(matrizA, matrizB)
 print('\nMatriz de entrada:\n', matrizA)
-print('\nResultados (LU Ingênua):\n')
+print('\nResultados (LU Pivotamento):\n')
 for i in range(0, len(result)):
     print('X', i+1, '=', result[i])
 print('')

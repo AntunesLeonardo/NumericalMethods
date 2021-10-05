@@ -16,11 +16,12 @@ k = 5
 hs = [h / 2 ** i for i in range(k)]
 
 # Function to be solved -----------------------------------
+
 def f(x):
     return np.exp(-x**2)
 
 def romberg(col1):
-  col1 = [item for item in col1]
+  #col1 = [item for item in col1]
   n = len(col1)
 
   for j in range(n - 1):
